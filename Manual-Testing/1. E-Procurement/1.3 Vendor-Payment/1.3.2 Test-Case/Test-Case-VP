@@ -1,0 +1,720 @@
+# Test Cases - Vendor Payment
+
+## 1. Purchase Order Integration
+
+---
+
+### VP-TC-001 - Submit Purchase Order to SAP
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-001 |
+| Test Scenario | Verify user can submit a Purchase Order to SAP |
+| Module | Vendor Payment |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | Final contract has been signed electronically |
+| Test Data | Valid contract and PO data |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the completed contract | Contract details are displayed |
+| 2 | Verify the final contract has been e-signed | Contract status is completed |
+| 3 | Select the option to submit the PO to SAP | PO submission process is displayed |
+| 4 | Submit the PO to SAP | PO submission is successfully processed |
+| 5 | Check the PO status | PO status is updated correctly |
+
+#### Expected Result
+
+The Purchase Order is successfully submitted to SAP.
+
+---
+
+### VP-TC-002 - SAP Purchase Order Approval
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-002 |
+| Test Scenario | Verify Purchase Order can be approved in SAP |
+| Module | SAP Integration |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | PO has been submitted to SAP |
+| Test Data | Valid Purchase Order |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the PO in SAP | PO is displayed |
+| 2 | Review the PO information | PO data is displayed correctly |
+| 3 | Approve the PO | PO approval is successfully processed |
+| 4 | Check the PO status | PO status is updated to Approved |
+| 5 | Check Vendor Payment | Approved PO data is available for synchronization |
+
+#### Expected Result
+
+The PO is successfully approved in SAP and becomes available for Vendor Payment processing.
+
+---
+
+### VP-TC-003 - Synchronize Approved PO to Vendor Payment
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-003 |
+| Test Scenario | Verify approved PO data from SAP is synchronized to Vendor Payment |
+| Module | SAP Integration |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | PO has been approved in SAP |
+| Test Data | Approved PO |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open Vendor Payment | Vendor Payment page is displayed |
+| 2 | Search for the approved PO | PO is displayed |
+| 3 | Open the PO | PO information is displayed |
+| 4 | Compare the PO data with SAP | Data is consistent |
+| 5 | Check Vendor Payment status | PO is available for Vendor Payment processing |
+
+#### Expected Result
+
+Approved PO data is successfully synchronized from SAP to Vendor Payment.
+
+---
+
+# 2. Vendor Payment Drafting
+
+---
+
+### VP-TC-004 - Create Vendor Payment Draft
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-004 |
+| Test Scenario | Verify user can create a Vendor Payment draft |
+| Module | Vendor Payment |
+| Priority | High |
+| Test Type | Positive |
+| Precondition | Approved PO data is available |
+| Test Data | Valid PO data |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the Vendor Payment module | Vendor Payment page is displayed |
+| 2 | Select the approved PO | PO information is displayed |
+| 3 | Select Create Vendor Payment | Vendor Payment form is displayed |
+| 4 | Enter the required information | Data is accepted |
+| 5 | Save the Vendor Payment | Vendor Payment draft is successfully created |
+| 6 | Open the draft | Entered information is displayed correctly |
+
+#### Expected Result
+
+User can successfully create and save a Vendor Payment draft.
+
+---
+
+### VP-TC-005 - Validate Mandatory Vendor Payment Fields
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-005 |
+| Test Scenario | Verify mandatory fields are validated |
+| Module | Vendor Payment |
+| Priority | High |
+| Test Type | Negative |
+| Precondition | Vendor Payment form is accessible |
+| Test Data | Required fields left empty |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the Vendor Payment form | Form is displayed |
+| 2 | Leave mandatory fields empty | Required fields remain empty |
+| 3 | Select Save | Validation is triggered |
+| 4 | Observe the form | Validation messages are displayed |
+| 5 | Check Vendor Payment | Draft is not saved with incomplete data |
+
+#### Expected Result
+
+The system prevents saving incomplete Vendor Payment data.
+
+---
+
+# 3. Personnel Configuration
+
+---
+
+### VP-TC-006 - Configure User Personnel
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-006 |
+| Test Scenario | Verify user can configure user personnel |
+| Module | Vendor Payment |
+| Priority | High |
+| Test Type | Positive |
+| Precondition | Vendor Payment draft has been created |
+| Test Data | Valid user personnel |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the personnel configuration | Personnel page is displayed |
+| 2 | Select User Personnel | User personnel form is displayed |
+| 3 | Select the required user | User information is displayed |
+| 4 | Add the user personnel | Personnel is added |
+| 5 | Save the configuration | Configuration is successfully saved |
+| 6 | Reopen the configuration | Selected personnel is displayed correctly |
+
+#### Expected Result
+
+User personnel is successfully configured.
+
+---
+
+### VP-TC-007 - Configure Vendor Personnel
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-007 |
+| Test Scenario | Verify user can configure vendor personnel |
+| Module | Vendor Payment |
+| Priority | High |
+| Test Type | Positive |
+| Precondition | Vendor Payment draft has been created |
+| Test Data | Valid vendor personnel |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the personnel configuration | Personnel page is displayed |
+| 2 | Select Vendor Personnel | Vendor personnel form is displayed |
+| 3 | Select the required vendor personnel | Vendor information is displayed |
+| 4 | Add the vendor personnel | Personnel is added |
+| 5 | Save the configuration | Configuration is successfully saved |
+| 6 | Reopen the configuration | Selected vendor personnel is displayed correctly |
+
+#### Expected Result
+
+Vendor personnel is successfully configured.
+
+---
+
+# 4. Work Reports
+
+---
+
+### VP-TC-008 - Create Work Commencement Report
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-008 |
+| Test Scenario | Verify user can create a work commencement report |
+| Module | Vendor Payment |
+| Priority | High |
+| Test Type | Positive |
+| Precondition | Vendor Payment has been created and personnel configured |
+| Test Data | Valid work commencement information |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the work commencement section | Work commencement page is displayed |
+| 2 | Enter the required information | Data is accepted |
+| 3 | Complete the required fields | No validation error is displayed |
+| 4 | Save the report | Report is successfully created |
+| 5 | Open the report | Report information is displayed correctly |
+
+#### Expected Result
+
+Work commencement report is successfully created.
+
+---
+
+### VP-TC-009 - Create Work Handover Report
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-009 |
+| Test Scenario | Verify user can create a work handover report |
+| Module | Vendor Payment |
+| Priority | High |
+| Test Type | Positive |
+| Precondition | Work has been completed and required data is available |
+| Test Data | Valid work handover information |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the work handover section | Work handover page is displayed |
+| 2 | Enter the required information | Data is accepted |
+| 3 | Upload supporting documents if required | Documents are uploaded successfully |
+| 4 | Save the report | Work handover report is created |
+| 5 | Review the report | Report information is displayed correctly |
+
+#### Expected Result
+
+Work handover report is successfully created and stored.
+
+---
+
+### VP-TC-010 - Create Work Progress Report
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-010 |
+| Test Scenario | Verify user can create a work progress report |
+| Module | Vendor Payment |
+| Priority | Medium |
+| Test Type | Positive |
+| Precondition | Vendor Payment is active and work progress is required |
+| Test Data | Valid progress information |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the progress report section | Progress report page is displayed |
+| 2 | Enter the current work progress | Progress data is accepted |
+| 3 | Enter the required supporting information | Data is accepted |
+| 4 | Save the progress report | Progress report is successfully saved |
+| 5 | Review the progress information | Progress data is displayed correctly |
+
+#### Expected Result
+
+Work progress is successfully recorded in the system.
+
+---
+
+# 5. GR / SES
+
+---
+
+### VP-TC-011 - Receive GR / SES
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-011 |
+| Test Scenario | Verify user can perform GR / SES acceptance |
+| Module | Vendor Payment |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | Required work and supporting documents have been completed |
+| Test Data | Valid GR / SES data |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the GR / SES section | GR / SES page is displayed |
+| 2 | Select the relevant Vendor Payment | Payment information is displayed |
+| 3 | Review the work information | Work information is displayed correctly |
+| 4 | Enter the GR / SES information | Data is accepted |
+| 5 | Submit the GR / SES | Acceptance is processed |
+| 6 | Check the status | GR / SES status is updated correctly |
+
+#### Expected Result
+
+GR / SES acceptance is successfully processed and synchronized with SAP.
+
+#### Known Defect
+
+The GR / SES process may fail due to SAP integration issues.
+
+#### Related Bug
+
+`VP-BUG-002`
+
+---
+
+# 6. Vendor Billing
+
+---
+
+### VP-TC-012 - Submit Billing Documents
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-012 |
+| Test Scenario | Verify vendor can submit billing documents |
+| Module | Vendor Payment |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | GR / SES has been successfully completed |
+| Test Data | Valid billing documents |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Login using a valid vendor account | Vendor successfully logs in |
+| 2 | Open the relevant Vendor Payment | Vendor Payment details are displayed |
+| 3 | Open the billing section | Billing page is displayed |
+| 4 | Upload the required billing documents | Documents are uploaded successfully |
+| 5 | Submit the billing documents | Submission is successfully processed |
+| 6 | Check the billing status | Status is updated correctly |
+
+#### Expected Result
+
+Vendor successfully submits the required billing documents.
+
+---
+
+### VP-TC-013 - Approve Billing Documents
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-013 |
+| Test Scenario | Verify user can approve vendor billing documents |
+| Module | Vendor Payment |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | Vendor has submitted billing documents |
+| Test Data | Valid billing documents |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Login using an authorized user account | User successfully logs in |
+| 2 | Open the billing approval page | Billing data is displayed |
+| 3 | Review the billing documents | Documents can be reviewed |
+| 4 | Approve the billing documents | Approval is processed |
+| 5 | Check the approval status | Status is updated to Approved |
+
+#### Expected Result
+
+Billing documents are successfully approved.
+
+---
+
+# 7. Payment Memorandum
+
+---
+
+### VP-TC-014 - Create Payment Memorandum
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-014 |
+| Test Scenario | Verify user can create a payment memorandum |
+| Module | Vendor Payment |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | Billing documents have been approved |
+| Test Data | Valid payment information |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the payment memorandum section | Payment memorandum page is displayed |
+| 2 | Select the approved billing transaction | Transaction information is displayed |
+| 3 | Enter required payment information | Data is accepted |
+| 4 | Create the payment memorandum | Memorandum is successfully created |
+| 5 | Review the memorandum | Information is displayed correctly |
+
+#### Expected Result
+
+Payment memorandum is successfully created.
+
+---
+
+### VP-TC-015 - Submit Payment Memorandum for Approval
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-015 |
+| Test Scenario | Verify payment memorandum can be submitted for approval |
+| Module | Vendor Payment |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | Payment memorandum has been created |
+| Test Data | Valid payment memorandum |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the payment memorandum | Memorandum is displayed |
+| 2 | Review the payment information | Data is displayed correctly |
+| 3 | Submit the memorandum for approval | Approval workflow is triggered |
+| 4 | Check the approval recipients | User and vendor approval parties are displayed |
+| 5 | Check the status | Status changes to Pending Approval |
+
+#### Expected Result
+
+Payment memorandum is successfully submitted to the required approvers.
+
+---
+
+### VP-TC-016 - Approve Payment Memorandum
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-016 |
+| Test Scenario | Verify required parties can approve the payment memorandum |
+| Module | Vendor Payment |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | Payment memorandum has been submitted for approval |
+| Test Data | Valid payment memorandum |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Login using the authorized user account | User successfully logs in |
+| 2 | Open the payment memorandum | Memorandum is displayed |
+| 3 | Review the payment information | Information is displayed correctly |
+| 4 | Approve the memorandum | Approval is successfully submitted |
+| 5 | Login using the vendor account | Vendor successfully logs in |
+| 6 | Open the payment memorandum | Memorandum is displayed |
+| 7 | Approve the memorandum | Vendor approval is successfully submitted |
+| 8 | Check the status | Approval status is updated correctly |
+
+#### Expected Result
+
+Required user and vendor approvals are successfully completed.
+
+#### Known Defect
+
+Approval process sometimes fails even though the issue has previously been resolved.
+
+#### Related Bug
+
+`VP-BUG-001`
+
+---
+
+# 8. Payment Processing
+
+---
+
+### VP-TC-017 - Process Payment Through SAP
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-017 |
+| Test Scenario | Verify approved payment can be processed through SAP |
+| Module | SAP Integration |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | Payment memorandum has been fully approved |
+| Test Data | Approved payment transaction |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the approved payment transaction | Payment information is displayed |
+| 2 | Submit the payment for SAP processing | Payment request is sent to SAP |
+| 3 | Open SAP | Payment transaction is available |
+| 4 | Process the payment | Payment is successfully processed |
+| 5 | Verify payment status | Payment status is updated correctly |
+
+#### Expected Result
+
+Payment is successfully processed through SAP.
+
+#### Known Defect
+
+Payment submission may occasionally fail.
+
+#### Related Bug
+
+`VP-BUG-003`
+
+---
+
+### VP-TC-018 - Verify Payment Status
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-018 |
+| Test Scenario | Verify successful SAP payment status is synchronized to Vendor Payment |
+| Module | SAP Integration |
+| Priority | Critical |
+| Test Type | Positive |
+| Precondition | Payment has been successfully processed in SAP |
+| Test Data | Successful SAP payment transaction |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Verify payment transaction in SAP | Payment is successfully completed |
+| 2 | Open Vendor Payment | Vendor Payment page is displayed |
+| 3 | Open the relevant payment transaction | Payment details are displayed |
+| 4 | Check payment status | Status reflects successful payment |
+| 5 | Compare payment information with SAP | Data is consistent |
+
+#### Expected Result
+
+Successful payment information is synchronized correctly between SAP and Vendor Payment.
+
+---
+
+# 9. Payment Report
+
+---
+
+### VP-TC-019 - Create Payment Report
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-019 |
+| Test Scenario | Verify user can create a payment report after successful payment |
+| Module | Vendor Payment |
+| Priority | High |
+| Test Type | Positive |
+| Precondition | Payment has been successfully completed |
+| Test Data | Successful payment transaction |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the payment report section | Payment report page is displayed |
+| 2 | Select the completed payment transaction | Payment information is displayed |
+| 3 | Create the payment report | Payment report is successfully created |
+| 4 | Review the payment report | Report information is displayed correctly |
+| 5 | Save the report | Report is successfully stored |
+
+#### Expected Result
+
+Payment report is successfully created and stored.
+
+---
+
+# 10. Negative & Integration Testing
+
+---
+
+### VP-TC-020 - Handle SAP Integration Failure During GR / SES
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-020 |
+| Test Scenario | Verify system handles SAP integration failure during GR / SES |
+| Module | SAP Integration |
+| Priority | Critical |
+| Test Type | Negative / Integration |
+| Precondition | SAP integration is unavailable or returns an error |
+| Test Data | Valid GR / SES transaction |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Create a valid GR / SES transaction | Transaction is created |
+| 2 | Submit the GR / SES | System attempts SAP synchronization |
+| 3 | Simulate or encounter SAP integration failure | Integration error occurs |
+| 4 | Observe the application | Appropriate error/status is displayed |
+| 5 | Check transaction data | Data is not incorrectly marked as successful |
+
+#### Expected Result
+
+The system handles SAP integration failure without incorrectly marking the GR / SES transaction as successful.
+
+---
+
+### VP-TC-021 - Handle Payment Submission Failure
+
+| Field | Details |
+|---|---|
+| Test Case ID | VP-TC-021 |
+| Test Scenario | Verify system handles payment submission failure |
+| Module | SAP Integration |
+| Priority | Critical |
+| Test Type | Negative / Integration |
+| Precondition | Payment memorandum has been fully approved |
+| Test Data | Approved payment transaction |
+
+#### Test Steps
+
+| Step | Action | Expected Result |
+|---|---|---|
+| 1 | Open the approved payment transaction | Payment information is displayed |
+| 2 | Submit the payment to SAP | System attempts to process payment |
+| 3 | Encounter payment submission failure | Payment process fails |
+| 4 | Observe the application | Appropriate error/status is displayed |
+| 5 | Check payment status | Transaction is not incorrectly marked as Paid |
+
+#### Expected Result
+
+The system correctly handles payment submission failure and maintains an accurate payment status.
+
+#### Known Defect
+
+Payment submission occasionally fails.
+
+#### Related Bug
+
+`VP-BUG-003`
+
+---
+
+# 11. Test Case Summary
+
+| Test Case ID | Test Scenario | Type | Priority |
+|---|---|---|---|
+| VP-TC-001 | Submit Purchase Order to SAP | Positive | Critical |
+| VP-TC-002 | SAP Purchase Order Approval | Positive | Critical |
+| VP-TC-003 | Synchronize Approved PO | Positive | Critical |
+| VP-TC-004 | Create Vendor Payment Draft | Positive | High |
+| VP-TC-005 | Validate Mandatory Fields | Negative | High |
+| VP-TC-006 | Configure User Personnel | Positive | High |
+| VP-TC-007 | Configure Vendor Personnel | Positive | High |
+| VP-TC-008 | Create Work Commencement Report | Positive | High |
+| VP-TC-009 | Create Work Handover Report | Positive | High |
+| VP-TC-010 | Create Work Progress Report | Positive | Medium |
+| VP-TC-011 | Receive GR / SES | Positive | Critical |
+| VP-TC-012 | Submit Billing Documents | Positive | Critical |
+| VP-TC-013 | Approve Billing Documents | Positive | Critical |
+| VP-TC-014 | Create Payment Memorandum | Positive | Critical |
+| VP-TC-015 | Submit Payment Memorandum for Approval | Positive | Critical |
+| VP-TC-016 | Approve Payment Memorandum | Positive | Critical |
+| VP-TC-017 | Process Payment Through SAP | Positive | Critical |
+| VP-TC-018 | Verify Payment Status | Positive | Critical |
+| VP-TC-019 | Create Payment Report | Positive | High |
+| VP-TC-020 | Handle SAP Integration Failure During GR / SES | Negative | Critical |
+| VP-TC-021 | Handle Payment Submission Failure | Negative | Critical |
+
+## Test Coverage
+
+The test cases cover the following Vendor Payment processes:
+
+- Purchase Order submission
+- SAP Purchase Order approval
+- SAP integration
+- Vendor Payment synchronization
+- Vendor Payment drafting
+- User personnel configuration
+- Vendor personnel configuration
+- Work commencement
+- Work progress
+- Work handover
+- GR / SES
+- Vendor billing
+- Billing approval
+- Payment memorandum
+- User and vendor approval
+- SAP payment processing
+- Payment status synchronization
+- Payment report
+- SAP integration failure handling
+- Payment submission failure handling
